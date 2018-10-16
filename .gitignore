@@ -1,1 +1,2 @@
 /eosio_docker/data
+eosio_docker/scripts/.fuse_hidden*
