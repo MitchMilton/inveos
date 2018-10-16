@@ -7,7 +7,6 @@ let Supply = null;
 try {
   const SupplySchema = new Schema(
     {
-      _id: String,
       supplier: String,
       buyer: String,
       timestamp: Number,
