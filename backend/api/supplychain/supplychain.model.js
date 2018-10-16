@@ -5,13 +5,19 @@ const { Schema } = mongoose;
 let Supply = null;
 
 try {
-  const SupplySchema = new Schema({
-    _id: String,
-    supplyConfirmed: {
-      type: Boolean,
-      default: false
-    }
-  });
+  const SupplySchema = new Schema(
+    {
+      _id: String,
+      supplier: String,
+      buyer: String,
+      timestamp: Number,
+      supplyConfirmed: {
+        type: Boolean,
+        default: false
+      }
+    },
+    { strict: false }
+  );
 
   Supply = mongoose.model("Supply", SupplySchema);
 } catch (e) {
