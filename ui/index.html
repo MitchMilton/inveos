@@ -13,11 +13,11 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles -->
     <link href="css/style.css" rel="stylesheet">
 
   </head>
@@ -32,11 +32,13 @@
             <div class="card col-sm-10 offset-sm-1">
                 <div class="card-body">
                   <div class="card-title">
-                    <h5 class="float-left">MY INVOICES</h5>
-                    <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm pull-right"><li class="fa fa-plus"></li> Create</a>
                   </div>
-                  <table class="table table-responsive table-striped">
+                  <table class="table table-responsive table-striped" width="100%">
                       <thead>
+                        <tr>
+                          <td colspan="3"><h5>MY INVOICES</h5></td>
+                          <td colspan="3"><a data-toggle="modal" href="#create" class="btn btn-primary btn-sm float-right"><li class="fa fa-plus"></li> Create</a></td>
+                        </tr>
                         <tr>
                           <th scope="col">#</th>                          
                           <th scope="col">Date</th>
@@ -53,7 +55,10 @@
                           <td>MADUHFOEOJOFED</td>
                           <td>SDHJKFUOIERNKS</td>
                           <td>SDHJKFUOIERNKS</td>
-                          <td><a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li> Transfer</a></td>
+                          <td>
+                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li></a>
+                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-eye"></li></a>
+                          </td>
                         </tr>
                         <tr>
                           <th scope="row">2</th>
@@ -61,7 +66,10 @@
                           <td>MADUHFOEOJOFED</td>
                           <td>SDHJKFUOIERNKS</td>
                           <td>SDHJKFUOIERNKS</td>
-                          <td><a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li> Transfer</a></td>
+                          <td>
+                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li></a>
+                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-eye"></li></a>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -86,7 +94,52 @@
       </div>
     </footer>
 
-    <!-- Portfolio Modals -->
+    <!-- MODALS -->
+
+    <!-- CREATE INVOICE -->
+    <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+                <div class="modal-body">
+                  <!-- Invoice  Details Go Here -->
+                  <h4 class="text-uppercase">NEW INVOICE</h4>
+                  <form>
+                      <div class="form-group form-inline">
+                        <input type="text" class="form-control" id="buyer" aria-describedby="emailHelp" placeholder="Buyer ID">
+                      </div>
+                      <table class="table table-responsive" width="100%">
+                          <thead>
+                            <tr>
+                              <th scope="col">Item</th>  
+                              <th scope="col">Amount</th>                        
+                              <th scope="col"> <a id="addItem" href="#" class="btn btn-primary btn-sm"><li class="fa fa-plus"></li></a> </th>
+                            </tr>
+                          </thead>
+                          <tbody id="invoiceItems">
+                            <tr>
+                              <td><input type="text" class="form-control" name="item[]" placeholder="Item"></td>
+                              <td><input type="text" class="form-control" id="amount[]"  placeholder="00"></td>
+                              <td>
+                                  <a  href="#" class="btn btn-danger btn-sm removeItem"><li class="fa fa-times"></li></a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </form>
+                  <button class="btn btn-primary btn-block" data-dismiss="modal" type="button"> Create</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Modal 1 -->
     <div class="modal fade" id="transfer1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -128,8 +181,9 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Contact form JavaScript -->
+    <!-- Other JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/functions.js"></script>
 
 
   </body>
