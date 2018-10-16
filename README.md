@@ -13,6 +13,8 @@ NoteChain demonstrates the eosio platform running a blockchain as a local single
 
 Github eosio-project-boilerplate-simple (https://github.com/EOSIO/eosio-project-boilerplate-simple) contains the UI and Smart Contract code, as well as setup scripts which will initialise and start all the necessary components.
 
+<!-- cleos push action scfaccount initiate '{"supplier":"supplier", "products":[{"name":rice,"quantity":"5","price":"200"},{"name":"maize","quantity":"20","price":"100"}],"buyer":"buyer", "timestamp":"2017-08-08T20:55:13"}' -p supplier -->
+
 The sample DApp demonstrates storing data in multi index table and retrieving this data into the web based UI. NoteChain is a simple note taking application, where notes are tied to user accounts. For this example, all accounts are pre-created by scripts and the account details are displayed at the bottom of the NoteChain UI.
 
 Each account can then be used to add a note to the blockchain. The individual notes are saved in a multi-index table and for simplicity are of fixed width. Each account may have one note attached to it, adding a note to an account with an existing note will replace the existing note with a new note.
