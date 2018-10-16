@@ -1,6 +1,5 @@
 # Overview
-
-NoteChain demonstrates the eosio platform running a blockchain as a local single node test net with a simple DApp, NoteChain. NoteChain allows users to create and update notes. This guide uses scripts, containing relevant commands, which will show you how to install, build and run NoteChain, and by doing so will demonstrate:
+how to install, build and run SupplyChain, and by doing so will demonstrate:
 
 - Downloading and running eosio in docker;
 - Managing your docker container;
@@ -11,13 +10,10 @@ NoteChain demonstrates the eosio platform running a blockchain as a local single
 - Connecting the UI to the blockchain using eosjs;
 - Styling the UI using Material-UI.
 
-Github eosio-project-boilerplate-simple (https://github.com/EOSIO/eosio-project-boilerplate-simple) contains the UI and Smart Contract code, as well as setup scripts which will initialise and start all the necessary components.
+cleos push action scfaccount initiate '{"supplier":"supplier", "products":[{"name":rice,"quantity":"5","price":"200"},{"name":"maize","quantity":"20","price":"100"}],"buyer":"buyer", "timestamp":"2017-08-08T20:55:13"}' -p supplier
 
-<!-- cleos push action scfaccount initiate '{"supplier":"supplier", "products":[{"name":rice,"quantity":"5","price":"200"},{"name":"maize","quantity":"20","price":"100"}],"buyer":"buyer", "timestamp":"2017-08-08T20:55:13"}' -p supplier -->
+All accounts are pre-created by scripts and the account details are displayed at the bottom of the SupplyChain UI.
 
-The sample DApp demonstrates storing data in multi index table and retrieving this data into the web based UI. NoteChain is a simple note taking application, where notes are tied to user accounts. For this example, all accounts are pre-created by scripts and the account details are displayed at the bottom of the NoteChain UI.
-
-Each account can then be used to add a note to the blockchain. The individual notes are saved in a multi-index table and for simplicity are of fixed width. Each account may have one note attached to it, adding a note to an account with an existing note will replace the existing note with a new note.
 
 **Any private keys you see in this repository are for demo purposes only. For a real DApp NEVER expose the private keys.**
 
@@ -62,7 +58,7 @@ docker stop eosio_supplychain_container
 
 # Detailed guide
 
-In this section we will describe in detail each script used to run the NoteChain environment in details.
+In this section we will describe in detail each script used to run the SupplyChain environment in details.
 
 ## Initial setup
 
@@ -155,7 +151,7 @@ This removes all data on the blockchain, including accounts, deployed smart cont
 ## Project structure
 
 ```js
-noteChain // project directory
+SupplyChain // project directory
 ├── eosio_docker
 │   ├── * contracts // this folder will be mounted into docker
 │   │   └── supplychain
@@ -232,12 +228,12 @@ The following script will help you to unlock the wallet, compile the modified co
 Inside docker container
 
 ```sh
-./scripts/deploy_contract.sh supplychain notechainacc notechainwal $(cat notechain_wallet_password.txt)
+./scripts/deploy_contract.sh supplychain Supplychainacc Supplychainwal $(cat Supplychain_wallet_password.txt)
 ```
 
 After running this script the modified smart contract will be deployed on the blockchain.
 
-Remember to redeploy the NoteChain contract each time you modify it using the steps above!
+Remember to redeploy the SupplyChain contract each time you modify it using the steps above!
 
 ## Frontend:
 
