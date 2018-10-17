@@ -36,15 +36,16 @@
                   <table class="table table-responsive table-striped" width="100%">
                       <thead>
                         <tr>
-                          <td colspan="3"><h5>MY INVOICES</h5></td>
-                          <td colspan="3"><a data-toggle="modal" href="#create" class="btn btn-primary btn-sm float-right"><li class="fa fa-plus"></li> Create</a></td>
+                          <td colspan="3"><h3 class="heading">ORDERS</h3></td>
+                          <td colspan="4"><a data-toggle="modal" href="#create" class="btn btn-primary btn-sm float-right"><li class="fa fa-plus"></li> Create</a></td>
                         </tr>
                         <tr>
                           <th scope="col">#</th>                          
                           <th scope="col">Date</th>
-                          <th scope="col">Supplier</th>
                           <th scope="col">Buyer</th>
                           <th scope="col">Financier</th>
+                          <th scope="col">Supplier</th>
+                          <th scope="col">Status</th>
                           <th scope="col"></th>
                         </tr>
                       </thead>
@@ -52,25 +53,50 @@
                         <tr>
                           <th scope="row">1</th>
                           <td>16-Oct-2018</td>
-                          <td>MADUHFOEOJOFED</td>
-                          <td>SDHJKFUOIERNKS</td>
-                          <td>SDHJKFUOIERNKS</td>
+                          <td><li class="fa fa-user"></li> MADUHFOEOJOFED</td>
+                          <td><li class="fa fa-dot-circle text-danger"></li> SDHJKFUOIERNKS</td>
+                          <td>--</td>
+                          <td class="text-danger">Pending Approval</td>
                           <td>
-                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li></a>
-                            <a data-toggle="modal" href="#invoice-1" class="btn btn-primary btn-sm"><li class="fa fa-eye"></li></a>
+                              <a data-toggle="modal" href="#financier1" class="btn btn-primary btn-sm"><li class="fa fa-money-bill"></li></a>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row">2</th>
                           <td>16-Oct-2018</td>
-                          <td>MADUHFOEOJOFED</td>
+                          <td><li class="fa fa-user"></li> MADUHFOEOJOFED</td>
                           <td>SDHJKFUOIERNKS</td>
-                          <td>SDHJKFUOIERNKS</td>
+                          <td><li class="fa fa-dot-circle text-danger"></li> LKDUFGHKURUHFD</td>
+                          <td class="text-danger">Pending Approval</td>
                           <td>
-                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-exchange-alt"></li></a>
-                            <a data-toggle="modal" href="#transfer1" class="btn btn-primary btn-sm"><li class="fa fa-eye"></li></a>
+                            <!-- <a data-toggle="modal" href="#financier1" class="btn btn-primary btn-sm"><li class="fa fa-money-bill"></li></a> -->
+                            <a data-toggle="modal" href="#supplier1" class="btn btn-primary btn-sm"><li class="fa fa-box"></li></a>
+                            <!-- <a data-toggle="modal" href="#goodsrecieved1" class="btn btn-primary btn-sm"><li class="fa fa-hands"></li></a> -->
                           </td>
                         </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>16-Oct-2018</td>
+                          <td><li class="fa fa-user"></li> <li class="fa fa-dot-circle text-warning"></li> MADUHFOEOJOFED</td>
+                          <td>SDHJKFUOIERNKS</td>
+                          <td>LKDUFGHKURUHFD</td>
+                          <td class="text-warning">Transfering Goods</td>
+                          <td>                            
+                              <a data-toggle="modal" href="#goodsrecieved" class="btn btn-primary btn-sm"><li class="fa fa-hands"></li></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>16-Oct-2018</td>
+                          <td><li class="fa fa-user"></li> MADUHFOEOJOFED</td>
+                          <td>SDHJKFUOIERNKS</td>
+                          <td>LKDUFGHKURUHFD</td>
+                          <td class="text-success">Complete</td>
+                          <td>                            
+                              <a data-toggle="modal" href="#invoice1" class="btn btn-primary btn-sm"><li class="fa fa-eye"></li></a>
+                          </td>
+                        </tr>
+                        
                       </tbody>
                     </table>
                 </div>
@@ -96,23 +122,27 @@
 
     <!-- MODALS -->
 
-    <!-- CREATE INVOICE -->
+    <!-- CREATE PUCHASE ORDER -->
     <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
+          <div class="modal-header">
+            
+            <h5 class="moodal-title text-uppercase"> <li class="fa fa-file"></li> NEW PURCHASE ORDER</h5>
+            <div class="close-modal" data-dismiss="modal">
+                <li class="fa fa-times"></li>
             </div>
+          
           </div>
-          <div class="container">
-            <div class="row">
-                <div class="modal-body">
+          
+          <div class="modal-body">
+              <div class="container">
                   <!-- Invoice  Details Go Here -->
-                  <h5 class="text-uppercase">NEW INVOICE</h5>
                   <form>
                       <div class="form-group form-inline">
-                        <input type="text" class="form-control" id="buyer" aria-describedby="emailHelp" placeholder="Buyer ID">
+
+                        <input type="text" class="form-control col-sm-4" id="financier" placeholder="Buyer ID">
+                        <input type="text" class="form-control col-sm-8" id="key" placeholder="Private Key">
                       </div>
                       <table class="table table-responsive" width="100%">
                           <thead>
@@ -132,81 +162,277 @@
                             </tr>
                           </tbody>
                         </table>
+
+                        <div class="form-group form-inline">
+                          <input type="text" class="form-control col-sm-12" id="supplier" placeholder="Supplier Account">
+                          <input type="text" class="form-control col-sm-12" id="financier" placeholder="Financier Account">
+                        </div>
                         
                         <input class="btn btn-primary btn-block" data-dismiss="modal" type="submit" value="Create"/>
                     </form>
                 </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --------------------------------------------  -->
+
+    <!-- FINANCIER MODAL -->
+    <div class="modal fade" id="financier1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <h6 class="modal-title text-uppercase">
+                <li class="fa fa-money-bill"></li> FINANCIER APPROVE</h6>
+            <div class="close-modal" data-dismiss="modal">
+                <li class="fa fa-times"></li>
+            </div>
+            
+          
+          </div>        
+          <div class="container">
+            <div class="row">
+              <div class="modal-body">
+                <!-- TRANSFER DETAILS -->
+                
+                
+                <!-- Invoice  Details Go Here -->
+                <table class="table table-responsive btn-block">
+                    <thead>
+                      <tr>
+                        <td scope="col">
+                          <b>Invoice:</b><br> 9173471 
+                        </td>  
+                        <td scope="col">
+                          <b>Supplier:</b> <br>MADUHFOEOJOFED 
+                        </td>  
+                        <td scope="col">
+                           <b>Financier:</b><br>SDHJKFUOIERNKS 
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col" colspan="2">Item</th>  
+                        <th scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody id="invoiceItems">
+                      <tr>
+                        <td  colspan="2">1000L Fuel</td>
+                        <td>120555456</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <form>
+                  <div class="form-group form-inline">
+                    <input type="text" class="form-control col-sm-4" id="supplier" placeholder="Account" value="SDHJKFUOIERNKS">
+                    <input type="text" class="form-control col-sm-8" id="financier" placeholder="Private Key">
+                  </div>
+                  <div class="form-group form-inline">
+                    <input class="btn btn-danger col-sm-6" data-dismiss="modal" type="submit" value="Decline"/>
+                    <input class="btn btn-success col-sm-6" data-dismiss="modal" type="submit" value="Approve"/>
+                  </div>
+                  
+                  
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- VIEW INVOICE -->
-    <div class="modal fade" id="invoice-1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
+    </div>
+    <!-- SUPPLIER MODAL -->
+    <div class="modal fade" id="supplier1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h6 class="modal-title text-uppercase">
+                  <li class="fa fa-box"></li> SUPPLIER APPROVE</h6>
+              <div class="close-modal" data-dismiss="modal">
+                  <li class="fa fa-times"></li>
+              </div>
+              
+            
+            </div>        
+            <div class="container">
+              <div class="row">
                 <div class="modal-body">
+                  <!-- TRANSFER DETAILS -->
+                  
+                  
                   <!-- Invoice  Details Go Here -->
-                  <h5 class="text-uppercase">INVOICE 9173471</h5>
-                  <table class="table table-responsive">
+                  <table class="table table-responsive btn-block">
                       <thead>
                         <tr>
-                          <th scope="col">
-                              <p></p><b>Supplier:</b> MADUHFOEOJOFED </p></th>  
-                          <th scope="col">
-                              <p></p><b>Buyer:</b >SDHJKFUOIERNKS </p></th>
+                          <td scope="col">
+                            <b>Invoice:</b><br> 9173471 
+                          </td>  
+                          <td scope="col">
+                            <b>Buyer:</b> <br>MADUHFOEOJOFED 
+                          </td>  
+                          <td scope="col">
+                             <b>Financier:</b><br>SDHJKFUOIERNKS 
+                          </td>
                         </tr>
                         <tr>
-                          <th scope="col">Item</th>  
+                          <th scope="col" colspan="2">Item</th>  
                           <th scope="col">Amount</th>
                         </tr>
                       </thead>
                       <tbody id="invoiceItems">
                         <tr>
-                          <td>1000L Fuel</td>
+                          <td  colspan="2">1000L Fuel</td>
                           <td>120555456</td>
                         </tr>
                       </tbody>
                     </table>
-                    <a data-dismiss="modal" href="#invoice-1" class="btn btn-primary btn-sm btn-block"><li class="fa fa-arrow-left"></li> Back</a>
+                  <form>
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control col-sm-4" id="buyer" placeholder="Account" value="SDHJKFUOIERNKS">
+                      <input type="text" class="form-control col-sm-8" id="financier" placeholder="Private Key">
+                    </div>
+                    <div class="form-group form-inline">
+                      <input class="btn btn-danger col-sm-6" data-dismiss="modal" type="submit" value="Decline"/>
+                      <input class="btn btn-success col-sm-6" data-dismiss="modal" type="submit" value="Approve"/>
+                    </div>
+                    
+                    
+                  </form>
                 </div>
+  
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TRANSFER MODAL -->
-    <div class="modal fade" id="transfer1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
+    <!-- GOODS RECIEVE MODAL -->
+    <div class="modal fade" id="goodsrecieved" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h6 class="modal-title text-uppercase">
+                  <li class="fa fa-hands"></li> GOODS REVCIEVED</h6>
+              <div class="close-modal" data-dismiss="modal">
+                  <li class="fa fa-times"></li>
+              </div>
+              
+            
+            </div>        
+            <div class="container">
+              <div class="row">
+                <div class="modal-body">
+                  <!-- TRANSFER DETAILS -->
+                  
+                  
+                  <!-- Invoice  Details Go Here -->
+                  <table class="table table-responsive btn-block">
+                      <thead>
+                        <tr>
+                          <td scope="col">
+                            <b>Invoice:</b><br> 9173471 
+                          </td>  
+                          <td scope="col">
+                            <b>Supplier:</b> <br>MADUHFOEOJOFED 
+                          </td>  
+                          <td scope="col">
+                             <b>Financier:</b><br>SDHJKFUOIERNKS 
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col" colspan="2">Item</th>  
+                          <th scope="col">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody id="invoiceItems">
+                        <tr>
+                          <td  colspan="2">1000L Fuel</td>
+                          <td>120555456</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  <form>
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control col-sm-4" id="buyer" placeholder="Account" value="SDHJKFUOIERNKS">
+                      <input type="text" class="form-control col-sm-8" id="financier" placeholder="Private Key">
+                    </div>
+                    <div class="form-group form-inline">
+                      <input class="btn btn-danger col-sm-6" data-dismiss="modal" type="submit" value="Decline"/>
+                      <input class="btn btn-success col-sm-6" data-dismiss="modal" type="submit" value="Approve"/>
+                    </div>
+                    
+                    
+                  </form>
+                </div>
+  
+              </div>
             </div>
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="modal-body">
-                <!-- TRANSFER DETAILS -->
-                <h5 class="text-uppercase">TRANSFER INVOICE</h5>
-                <form>
-                  <div class="form-group form-inline">
-                    <label for="buyer">Enter the EOS ID of the financier you wish to transfer the invoice to?</label>
-                    <input type="text" class="form-control" name="buyer" aria-describedby="emailHelp" placeholder="Buyer ID">
-                  </div>
-                  
-                  <input class="btn btn-primary btn-block" data-dismiss="modal" type="submit" value="TRANSFER"/>
-                </form>
-              </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- VIEW INVOICE -->
+    <div class="modal fade" id="invoice1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h6 class="modal-title text-uppercase">
+                  <li class="fa fa-file"></li> INVOICE</h6>
+              <div class="close-modal" data-dismiss="modal">
+                  <li class="fa fa-times"></li>
+              </div>
+              
+            
+            </div>        
+            <div class="container">
+              <div class="row">
+                <div class="modal-body">
+                  <!-- TRANSFER DETAILS -->
+                  
+                  
+                  <!-- Invoice  Details Go Here -->
+                  <table class="table table-responsive btn-block">
+                      <thead>
+                        <tr>
+                          <td scope="col">
+                            <b>Invoice:</b><br> 9173471 
+                          </td>  
+                          <td scope="col">
+                            <b>Buyer:</b> <br>LLANDFHUEOFNOUIE 
+                          </td>  
+                          <td scope="col">
+                            <b>Supplier:</b> <br>MADUHFOEOJOFED 
+                          </td>  
+                          <td scope="col">
+                             <b>Financier:</b><br>SDHJKFUOIERNKS 
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col" colspan="2">Item</th>  
+                          <th scope="col" colspan="2">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody id="invoiceItems">
+                        <tr>
+                          <td  colspan="2">1000L Fuel</td>
+                          <td>120555456</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+  
+              </div>
             </div>
           </div>
         </div>

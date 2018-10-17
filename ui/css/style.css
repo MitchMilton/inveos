@@ -3,15 +3,12 @@ body{
     color: white;
     background-color:#1B75BC ;  
 }
-section.masthead {
-    text-align: center;  
-    background-image: url("../img/map-image.png");
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
-section.masthead {
-    height: 100vh;
+.heading{
+    font-size: 1.2em;
+}
+input.form-control{
+    font-size:12px;
 }
 
 .invoices{
@@ -23,6 +20,19 @@ section.masthead {
 .logo{
     padding-top:5vh;
 }
+section.masthead {
+    text-align: center;  
+    background-image: url("../img/map-image.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+section.masthead {
+    height: 100vh;
+}
+
+
+
 
 footer{
     text-align: center;
